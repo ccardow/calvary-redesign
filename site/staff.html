@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Staff — Calvary Church</title>
+  <meta name="description" content="Meet the team at Calvary Church of Steinbach, MB. Pastors, directors, and staff who serve our community.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2b4a;
+      --gold: #d4a045;
+      --cream: #faf8f5;
+      --charcoal: #2d2d2d;
+      --warm-gray: #6b7280;
+      --white: #ffffff;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .material-icons-round { vertical-align: middle; font-size: inherit; }
+
+    /* ANIMATIONS */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.d1 { transition-delay: 0.1s; }
+    .fade-up.d2 { transition-delay: 0.2s; }
+    .fade-up.d3 { transition-delay: 0.3s; }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(26, 43, 74, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    .navbar .container { display: flex; justify-content: space-between; align-items: center; padding: 10px 24px; }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; transition: opacity 0.2s; }
+    .nav-logo:hover { opacity: 0.85; }
+    .nav-logo img { height: 52px; width: auto; }
+    .nav-links { display: flex; list-style: none; gap: 32px; }
+    .nav-links a { color: rgba(255, 255, 255, 0.85); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s, transform 0.2s; display: inline-block; }
+    .nav-links a:hover { color: var(--gold); transform: translateY(-1px); }
+    .nav-links a.active { color: var(--gold); }
+    .menu-toggle { display: none; background: none; border: none; color: var(--white); cursor: pointer; padding: 8px; }
+    .menu-toggle .material-icons-round { font-size: 28px; }
+
+    /* PAGE HERO */
+    .page-hero {
+      position: relative;
+      height: 45vh;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: var(--navy);
+      margin-top: 72px;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/1579723513105-DZ1MQ71CW3L5JGR8OEIK/IMG_2285-3.jpg?format=1500w') center/cover no-repeat;
+    }
+    .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26, 43, 74, 0.6), rgba(212, 160, 69, 0.25)); }
+    .page-hero-content { position: relative; z-index: 2; color: var(--white); max-width: 600px; padding: 0 2rem; opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .page-hero-content h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .page-hero-content p { font-size: 1.1rem; opacity: 0.85; line-height: 1.6; }
+
+    /* SECTION STYLES */
+    .staff-section { padding: 80px 0; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-label { font-size: 0.85rem; font-weight: 600; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+
+    /* LEADERSHIP */
+    .leadership-section { background: var(--white); }
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .leader-card {
+      text-align: center;
+      padding: 48px 32px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .leader-card:hover { transform: translateY(-6px); }
+    .leader-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 24px;
+      display: block;
+      border: 4px solid var(--gold);
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+    .leader-card:hover .leader-photo {
+      transform: scale(1.04);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+    .leader-card h3 { font-size: 1.3rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .leader-card .role { font-size: 0.95rem; color: var(--gold); font-weight: 600; margin-bottom: 16px; }
+    .leader-card .email-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--warm-gray); text-decoration: none; font-size: 0.9rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .leader-card .email-link:hover { color: var(--gold); }
+    .leader-card .email-link .material-icons-round { font-size: 18px; }
+
+    /* STAFF GRID */
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 32px;
+    }
+    .staff-card {
+      text-align: center;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 32px 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+    }
+    .staff-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); }
+    .staff-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 16px;
+      display: block;
+      border: 3px solid rgba(212, 160, 69, 0.3);
+      transition: all 0.3s ease;
+    }
+    .staff-card:hover .staff-photo { border-color: var(--gold); transform: scale(1.03); }
+    .staff-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .staff-card .role { font-size: 0.85rem; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+    .staff-card .email-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      color: var(--warm-gray); text-decoration: none; font-size: 0.85rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .staff-card .email-link:hover { color: var(--gold); }
+    .staff-card .email-link .material-icons-round { font-size: 16px; }
+
+    /* CTA */
+    .staff-cta {
+      padding: 80px 0;
+      background: var(--navy);
+      text-align: center;
+    }
+    .staff-cta p { color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 10px;
+      font-weight: 600; font-size: 1rem; cursor: pointer; border: none; transition: all 0.25s;
+      text-decoration: none;
+    }
+    .btn .material-icons-round { font-size: 20px; }
+    .btn-primary { background: var(--gold); color: var(--navy); }
+    .btn-primary:hover { background: #e5ae55; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212, 160, 69, 0.3); }
+    .btn-outline { background: transparent; border: 2px solid rgba(255, 255, 255, 0.4); color: var(--white); }
+    .btn-outline:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: var(--white); padding: 60px 0 24px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-logo img { height: 44px; width: auto; margin-bottom: 12px; opacity: 0.9; }
+    .footer-tagline { color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; font-style: italic; margin-bottom: 20px; }
+    .footer-addr p { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; line-height: 1.6; }
+    .footer-addr a { color: var(--gold); text-decoration: none; }
+    .footer-addr a:hover { text-decoration: underline; }
+    h4.footer-heading { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; color: var(--gold); }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: inline-block; }
+    .footer-links a:hover { color: var(--gold); transform: translateX(4px); }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a { width: 40px; height: 40px; background: rgba(255, 255, 255, 0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: rgba(255, 255, 255, 0.5); text-decoration: none; transition: all 0.25s; }
+    .footer-social a:hover { background: var(--gold); color: var(--navy); transform: translateY(-3px); }
+    .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 24px; text-align: center; font-size: 0.8rem; color: rgba(255, 255, 255, 0.25); }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .nav-logo img { height: 40px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .leadership-grid { grid-template-columns: 1fr; }
+      .staff-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    }
+    @media (max-width: 600px) {
+      .staff-grid { grid-template-columns: 1fr; }
+      .page-hero { min-height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/e4d41239-6211-4231-b72e-9e643dbcc0b2/horizontal.png" alt="Calvary Church" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#visit">Visit</a></li>
+      <li><a href="index.html#groups">Groups</a></li>
+      <li><a href="index.html#events">Events</a></li>
+      <li><a href="index.html#media">Media</a></li>
+      <li><a href="staff.html" class="active">Staff</a></li>
+      <li><a href="index.html#connect">Connect</a></li>
+    </ul>
+    <button class="menu-toggle"><span class="material-icons-round">menu</span></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <h1>Our Team</h1>
+    <p>The pastors, directors, and staff who serve Calvary Church and our community in Steinbach, MB.</p>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="staff-section leadership-section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-label">Leadership</p>
+      <h2 class="section-title">Meet Our Pastors & Directors</h2>
+    </div>
+    <div class="leadership-grid">
+      <!-- Rob Balfour -->
+      <div class="leader-card fade-up d1">
+        <img class="leader-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/c25a2d2d-1d6f-4a2b-9958-9c28a5696755/IMG_0471.jpg?format=320w" alt="Rob Balfour" loading="lazy" />
+        <h3>Rob Balfour</h3>
+        <p class="role">Team Leading Pastor</p>
+        <a href="mailto:rob@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> rob@thecalvarywebsite.com
+        </a>
+      </div>
+      <!-- Greg Friesen -->
+      <div class="leader-card fade-up d2">
+        <img class="leader-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/9b0c04df-05ab-48f8-8e36-60e861ba5577/IMG_0502-2.jpg?format=320w" alt="Greg Friesen" loading="lazy" />
+        <h3>Greg Friesen</h3>
+        <p class="role">Associate Pastor</p>
+        <a href="mailto:greg@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> greg@thecalvarywebsite.com
+        </a>
+      </div>
+      <!-- Matt Vogt -->
+      <div class="leader-card fade-up d3">
+        <img class="leader-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/9da9ced1-9523-4a4b-a8db-85b1370d2ff4/IMG_0500-2.jpg?format=320w" alt="Matt Vogt" loading="lazy" />
+        <h3>Matt Vogt</h3>
+        <p class="role">Care Pastor</p>
+        <a href="mailto:matt@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> matt@thecalvarywebsite.com
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAFF -->
+<section class="staff-section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-label">Our Staff</p>
+      <h2 class="section-title">The Full Team</h2>
+    </div>
+    <div class="staff-grid">
+      <!-- Gene Enns -->
+      <div class="staff-card fade-up d1">
+        <img class="staff-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/c32e0bb6-e910-43a8-95df-df6e731757ce/Gene.jpg?format=320w" alt="Gene Enns" loading="lazy" />
+        <h3>Gene Enns</h3>
+        <p class="role">Executive Director</p>
+        <a href="mailto:gene@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> gene@thecalvarywebsite.com
+        </a>
+      </div>
+      <!-- Agatha Giesbrecht -->
+      <div class="staff-card fade-up d2">
+        <img class="staff-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/b9148fb6-87b5-485f-a2d9-639dc62ea27a/IMG_0509-2.jpg?format=320w" alt="Agatha Giesbrecht" loading="lazy" />
+        <h3>Agatha Giesbrecht</h3>
+        <p class="role">Women's Director</p>
+        <a href="mailto:agatha@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> agatha@thecalvarywebsite.com
+        </a>
+      </div>
+      <!-- Colton Bercier -->
+      <div class="staff-card fade-up d3">
+        <img class="staff-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/c7668ba3-ddb2-4b13-b30f-74d325deff6d/IMG_0485.jpg?format=320w" alt="Colton Bercier" loading="lazy" />
+        <h3>Colton Bercier</h3>
+        <p class="role">Life Group Director</p>
+        <a href="mailto:colton@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> colton@thecalvarywebsite.com
+        </a>
+      </div>
+      <!-- Taylor Friesen -->
+      <div class="staff-card fade-up d1">
+        <img class="staff-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/615a6ec2-c8da-4545-bf1e-472472e6abc5/IMG_0461.jpg?format=320w" alt="Taylor Friesen" loading="lazy" />
+        <h3>Taylor Friesen</h3>
+        <p class="role">Youth Director</p>
+        <a href="mailto:taylor@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> taylor@thecalvarywebsite.com
+        </a>
+      </div>
+      <!-- Nick Froese -->
+      <div class="staff-card fade-up d2">
+        <img class="staff-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/5c22b411-e320-4f1e-ab5c-c8d810ff6e3c/IMG_0468.jpg?format=320w" alt="Nick Froese" loading="lazy" />
+        <h3>Nick Froese</h3>
+        <p class="role">Assistant Youth Director</p>
+        <a href="mailto:nick@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> nick@thecalvarywebsite.com
+        </a>
+      </div>
+      <!-- Emily Tyler -->
+      <div class="staff-card fade-up d3">
+        <img class="staff-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/27d8d0b5-6b9f-4b5a-bba9-b226ce612f33/IMG_0451.jpg?format=320w" alt="Emily Tyler" loading="lazy" />
+        <h3>Emily Tyler</h3>
+        <p class="role">Children's Ministry Director</p>
+        <a href="mailto:emily@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> emily@thecalvarywebsite.com
+        </a>
+      </div>
+      <!-- Susan Tyler -->
+      <div class="staff-card fade-up d1">
+        <img class="staff-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/bad5e881-c3ed-4a71-878e-8921a9919249/IMG_0496-2.jpg?format=320w" alt="Susan Tyler" loading="lazy" />
+        <h3>Susan Tyler</h3>
+        <p class="role">Children's Ministry Coordinator</p>
+        <a href="mailto:susan@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> susan@thecalvarywebsite.com
+        </a>
+      </div>
+      <!-- Kaleigh Kasdorf -->
+      <div class="staff-card fade-up d2">
+        <img class="staff-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/7f5696c7-1ac6-4472-811c-7c178de2eb26/IMG_0450.jpg?format=320w" alt="Kaleigh Kasdorf" loading="lazy" />
+        <h3>Kaleigh Kasdorf</h3>
+        <p class="role">Events Coordinator</p>
+        <a href="mailto:kaleigh@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> kaleigh@thecalvarywebsite.com
+        </a>
+      </div>
+      <!-- Irma Vogt-Dyck -->
+      <div class="staff-card fade-up d3">
+        <img class="staff-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/a7e45c06-f30b-4d71-a728-5eba95d92593/IMG_0479.jpg?format=320w" alt="Irma Vogt-Dyck" loading="lazy" />
+        <h3>Irma Vogt-Dyck</h3>
+        <p class="role">Financial Administrator</p>
+        <a href="mailto:finance@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> finance@thecalvarywebsite.com
+        </a>
+      </div>
+      <!-- Larry Gordon -->
+      <div class="staff-card fade-up d1">
+        <img class="staff-photo" src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/347a6bcf-e5d0-4ab2-98b2-8a7d6997e412/IMG_0454.jpg?format=320w" alt="Larry Gordon" loading="lazy" />
+        <h3>Larry Gordon</h3>
+        <p class="role">Building Administrator</p>
+        <a href="mailto:building@thecalvarywebsite.com" class="email-link">
+          <span class="material-icons-round">mail</span> building@thecalvarywebsite.com
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="staff-cta">
+  <div class="container">
+    <p class="fade-up">Have a question or want to connect with someone on our team? We'd love to hear from you.</p>
+    <a href="index.html#connect" class="btn btn-primary fade-up d1">
+      <span class="material-icons-round">handshake</span>
+      Get In Touch
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <a href="index.html"><img src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/e4d41239-6211-4231-b72e-9e643dbcc0b2/horizontal.png" alt="Calvary Church" /></a>
+        </div>
+        <p class="footer-tagline">"All of God, in all of us, for all the world."</p>
+        <div class="footer-addr">
+          <p>305 Main St, Steinbach, MB R5G 1Z2</p>
+          <p>Phone: 204.326.1095</p>
+          <p><a href="mailto:office@thecalvarywebsite.com">office@thecalvarywebsite.com</a></p>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#visit">Service Times</a></li>
+          <li><a href="index.html#groups">Groups</a></li>
+          <li><a href="index.html#events">Events</a></li>
+          <li><a href="index.html#media">Sermons</a></li>
+          <li><a href="https://eepurl.com/dPYF06" target="_blank">Newsletter</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Follow Us</h4>
+        <div class="footer-social">
+          <a href="http://www.facebook.com/220386214638263" target="_blank" title="Facebook">
+            <span class="material-icons-round">thumb_up</span>
+          </a>
+          <a href="http://www.youtube.com/channel/UCYPSOjzlu6SOntwzdqv2q5A" target="_blank" title="YouTube">
+            <span class="material-icons-round">play_circle</span>
+          </a>
+        </div>
+        <div style="margin-top: 24px;">
+          <h4 class="footer-heading">Office Hours</h4>
+          <ul class="footer-links">
+            <li><a href="#">Tuesday–Friday</a></li>
+            <li><a href="#">9:00 AM – 4:00 PM</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Calvary Church of Steinbach Inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+const toggle = document.querySelector('.menu-toggle');
+const links = document.querySelector('.nav-links');
+if (toggle) {
+  toggle.addEventListener('click', () => {
+    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '60px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'rgba(26, 43, 74, 0.95)';
+    links.style.padding = '20px';
+    links.style.gap = '16px';
+  });
+}
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
