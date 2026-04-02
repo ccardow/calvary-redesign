@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calvary Church — All of God, in all of us, for all the world</title>
+  <meta name="description" content="Calvary Church of Steinbach, MB. Sunday services at 9AM & 11AM. Livestream Sundays at 9AM. A warm, welcoming church community.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2b4a;
+      --gold: #d4a045;
+      --cream: #faf8f5;
+      --charcoal: #2d2d2d;
+      --warm-gray: #6b7280;
+      --white: #ffffff;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .material-icons-round { vertical-align: middle; font-size: inherit; }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(26, 43, 74, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    .navbar .container { display: flex; justify-content: space-between; align-items: center; padding: 10px 24px; }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 52px; width: auto; transition: height 0.3s ease; }
+    .nav-links { display: flex; list-style: none; gap: 32px; }
+    .nav-links a { color: rgba(255, 255, 255, 0.85); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .menu-toggle { display: none; background: none; border: none; color: var(--white); cursor: pointer; padding: 8px; }
+    .menu-toggle .material-icons-round { font-size: 28px; }
+
+    /* HERO */
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; background: var(--navy);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/1579723513105-DZ1MQ71CW3L5JGR8OEIK/IMG_2285-3.jpg?format=1500w') center/cover no-repeat;
+    }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26, 43, 74, 0.55), rgba(212, 160, 69, 0.3)); }
+    .hero-content { position: relative; z-index: 2; color: var(--white); max-width: 700px; padding: 0 2rem; }
+    .hero-tagline { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1.5rem; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+    .hero-tagline span { color: var(--gold); }
+    .hero-services { font-size: clamp(1.1rem, 2.5vw, 1.3rem); opacity: 0.95; margin-bottom: 0.5rem; font-weight: 500; text-shadow: 0 1px 8px rgba(0,0,0,0.3); }
+    .hero-livestream { font-size: 0.95rem; opacity: 0.8; margin-bottom: 2rem; }
+    .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 10px; font-weight: 600; font-size: 1rem; cursor: pointer; border: none; transition: all 0.2s ease; text-decoration: none; }
+    .btn .material-icons-round { font-size: 20px; }
+    .btn-primary { background: var(--gold); color: var(--navy); }
+    .btn-primary:hover { background: #e5ae55; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212, 160, 69, 0.3); }
+    .btn-outline { background: transparent; border: 2px solid rgba(255, 255, 255, 0.4); color: var(--white); }
+    .btn-outline:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
+    .btn-navy { background: var(--navy); color: var(--white); }
+    .btn-navy:hover { background: #233d6e; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26, 43, 74, 0.2); }
+
+    /* QUICK INFO */
+    .info-section { padding: 0; margin-top: -60px; position: relative; z-index: 10; }
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12); }
+    .info-card { padding: 40px 32px; text-align: center; border-right: 1px solid rgba(0, 0, 0, 0.06); transition: background 0.2s; }
+    .info-card:last-child { border-right: none; }
+    .info-card:hover { background: var(--cream); }
+    .info-icon { width: 56px; height: 56px; background: rgba(212, 160, 69, 0.12); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--gold); }
+    .info-icon .material-icons-round { font-size: 28px; }
+    .info-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: var(--navy); }
+    .info-card p { font-size: 0.95rem; color: var(--warm-gray); line-height: 1.5; }
+    .info-card .highlight { color: var(--gold); font-weight: 600; }
+
+    /* ABOUT SECTION */
+    .about-section { padding: 100px 0; }
+    .about-header { text-align: center; margin-bottom: 60px; }
+    .section-label { font-size: 0.85rem; font-weight: 600; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: var(--navy); letter-spacing: -0.02em; line-height: 1.2; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-text p { font-size: 1.1rem; line-height: 1.8; color: var(--warm-gray); margin-bottom: 24px; }
+    .about-image { border-radius: 16px; overflow: hidden; position: relative; height: 400px; }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
+
+    /* GROUPS SECTION */
+    .groups-section { padding: 100px 0; background: var(--white); }
+    .groups-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .group-card { background: var(--cream); border-radius: 14px; padding: 32px; transition: all 0.25s ease; }
+    .group-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08); }
+    .group-icon { width: 48px; height: 48px; background: rgba(212, 160, 69, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--gold); }
+    .group-icon .material-icons-round { font-size: 26px; }
+    .group-card h3 { font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .group-card p { font-size: 0.95rem; color: var(--warm-gray); line-height: 1.6; }
+
+    /* EVENTS SECTION */
+    .events-section { padding: 100px 0; }
+    .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 40px; }
+    .event-card {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      transition: all 0.25s ease;
+    }
+    .event-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    }
+    .event-image-wrap {
+      position: relative;
+      overflow: visible;
+    }
+    .event-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .event-card:hover .event-image {
+      transform: scale(1.05);
+    }
+    .event-image-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.4));
+    }
+    .event-date-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(26, 43, 74, 0.92);
+      backdrop-filter: blur(8px);
+      color: var(--white);
+      padding: 6px 14px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    .event-date-badge .material-icons-round { font-size: 16px; color: var(--gold); }
+    .event-date-badge .event-day { font-weight: 700; color: var(--gold); }
+    .event-body { padding: 24px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .event-date-bar .material-icons-round { color: var(--gold); font-size: 22px; }
+    .event-date-text { font-size: 0.9rem; }
+    .event-date-text .event-day { font-weight: 700; color: var(--gold); }
+    .event-body { padding: 24px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .event-body h3 { font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .event-body p { font-size: 0.925rem; color: var(--warm-gray); line-height: 1.6; margin-bottom: 16px; }
+    .event-meta { display: flex; align-items: center; gap: 16px; font-size: 0.85rem; color: var(--warm-gray); }
+    .event-meta-item { display: flex; align-items: center; gap: 4px; }
+    .event-meta-item .material-icons-round { font-size: 18px; color: var(--gold); }
+    .event-actions {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .event-actions .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 20px; font-size: 0.875rem; border-radius: 8px;
+      border: none; cursor: pointer; font-weight: 600;
+      transition: all 0.2s; text-decoration: none;
+      width: 100%;
+      justify-content: center;
+    }
+    .events-cta { text-align: center; }
+
+    /* SERMON SPOTLIGHT */
+    .sermon-section { padding: 100px 0; background: var(--navy); color: var(--white); }
+    .sermon-section .section-label { color: var(--gold); }
+    .sermon-section .section-title { color: var(--white); }
+    .sermon-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .sermon-video { border-radius: 14px; overflow: hidden; position: relative; height: 300px; background: rgba(255, 255, 255, 0.05); }
+    .sermon-video img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+    .sermon-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 72px; height: 72px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .sermon-play .material-icons-round { font-size: 36px; color: var(--navy); }
+    .sermon-play:hover { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 40px rgba(212, 160, 69, 0.4); }
+    .sermon-info h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
+    .sermon-info p { color: rgba(255, 255, 255, 0.6); margin-bottom: 24px; line-height: 1.6; }
+    .sermon-info a { color: var(--gold); text-decoration: none; font-weight: 600; }
+    .sermon-info a:hover { text-decoration: underline; }
+
+    /* CONNECT SECTION */
+    .connect-section { padding: 100px 0; }
+    .connect-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .connect-card { text-align: center; padding: 40px 24px; background: var(--white); border-radius: 14px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04); }
+    .connect-icon { width: 64px; height: 64px; background: rgba(26, 43, 74, 0.06); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--navy); }
+    .connect-icon .material-icons-round { font-size: 30px; }
+    .connect-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .connect-card p { font-size: 0.95rem; color: var(--warm-gray); margin-bottom: 16px; }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: var(--white); padding: 60px 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-logo img { height: 44px; width: auto; margin-bottom: 12px; opacity: 0.9; }
+    .footer-tagline { color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; font-style: italic; margin-bottom: 20px; }
+    .footer-addr p { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; line-height: 1.6; }
+    .footer-addr a { color: var(--gold); text-decoration: none; }
+    .footer-addr a:hover { text-decoration: underline; }
+    h4.footer-heading { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; color: var(--gold); }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a { width: 40px; height: 40px; background: rgba(255, 255, 255, 0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: rgba(255, 255, 255, 0.5); font-size: 22px; text-decoration: none; transition: all 0.2s; }
+    .footer-social a:hover { background: var(--gold); color: var(--navy); }
+    .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 24px; text-align: center; font-size: 0.8rem; color: rgba(255, 255, 255, 0.25); }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .info-grid { grid-template-columns: 1fr; }
+      .info-card { border-right: none; border-bottom: 1px solid rgba(0, 0, 0, 0.06); }
+      .about-grid, .sermon-content, .footer-grid { grid-template-columns: 1fr; }
+      .groups-grid { grid-template-columns: repeat(2, 1fr); }
+      .events-grid { grid-template-columns: 1fr; }
+      .connect-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .nav-logo img { height: 40px; }
+    }
+    @media (max-width: 600px) {
+      .groups-grid, .connect-grid { grid-template-columns: 1fr; }
+      .hero { min-height: 500px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/e4d41239-6211-4231-b72e-9e643dbcc0b2/horizontal.png" alt="Calvary Church" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#groups">Groups</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#media">Media</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+    <button class="menu-toggle"><span class="material-icons-round">menu</span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="visit">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-tagline">All of God. In all of us.<br><span>For all the world.</span></h1>
+    <p class="hero-services">Sunday Services: 9:00 AM & 11:00 AM</p>
+    <p class="hero-livestream">Livestream Sundays at 9:00 AM</p>
+    <div class="hero-ctas">
+      <a href="#visit" class="btn btn-primary"><span class="material-icons-round">event_available</span> Plan Your Visit</a>
+      <a href="https://www.youtube.com/calvarychurchsteinbach" class="btn btn-outline" target="_blank"><span class="material-icons-round">play_circle</span> Watch Online</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK INFO -->
+<section class="info-section">
+  <div class="container">
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-icon"><span class="material-icons-round">schedule</span></div>
+        <h3>Service Times</h3>
+        <p>Join us Sundays<br><span class="highlight">9:00 AM</span> — also on livestream<br><span class="highlight">11:00 AM</span> — in-person<br><em>Childcare: ages 1 – Grade 4</em></p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><span class="material-icons-round">child_friendly</span></div>
+        <h3>Your Kids Belong Here</h3>
+        <p>Ages 1 through Grade 4 head to their own classrooms after our opening praise & worship. Safe, fun, and full of stories.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><span class="material-icons-round">location_on</span></div>
+        <h3>Find Us</h3>
+        <p>305 Main Street<br>Steinbach, MB R5G 1Z2<br><span class="highlight">204.326.1095</span><br>Tues–Fri, 9 AM – 4 PM</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-header">
+      <p class="section-label">Welcome to Calvary</p>
+      <h2 class="section-title">A Church That Feels Like Home</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Church isn't meant to be a solo journey. At Calvary, we're a community of people from all walks of life who gather to worship, learn, and grow together. If you're wondering whether you'd fit in — you will.</p>
+        <p>Whether you've been following Jesus for decades or you're just starting to ask questions, there's a place for you here. Come as you are. Leave changed.</p>
+        <a href="#connect" class="btn btn-primary"><span class="material-icons-round">handshake</span> Get Connected</a>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80" alt="Community gathering together" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GROUPS -->
+<section class="groups-section" id="groups">
+  <div class="container">
+    <div class="about-header">
+      <p class="section-label">Get Connected</p>
+      <h2 class="section-title">Do Life Together</h2>
+    </div>
+    <div class="groups-grid">
+      <div class="group-card">
+        <div class="group-icon"><span class="material-icons-round">home</span></div>
+        <h3>Life Groups</h3>
+        <p>Small groups meet throughout the week in homes across Steinbach. Where deep friendships are built and real life gets lived.</p>
+      </div>
+      <div class="group-card">
+        <div class="group-icon"><span class="material-icons-round">park</span></div>
+        <h3>Harvest (50+)</h3>
+        <p>Golden years, golden community. Gatherings for fellowship, shared meals, trips, and good conversation.</p>
+      </div>
+      <div class="group-card">
+        <div class="group-icon"><span class="material-icons-round">sports_esports</span></div>
+        <h3>Men's Ministry</h3>
+        <p>First Saturday of every month — fellowship, food, and board games at the church. Just show up.</p>
+      </div>
+      <div class="group-card">
+        <div class="group-icon"><span class="material-icons-round">favorite</span></div>
+        <h3>Women's Ministry</h3>
+        <p>Tuesday mornings, 9–11 AM. Study, prayer, and community. Part of our morning is spent in the prayer room.</p>
+      </div>
+      <div class="group-card">
+        <div class="group-icon"><span class="material-icons-round">stars</span></div>
+        <h3>Young Adults</h3>
+        <p>Finding your way in your 20s? A place to ask hard questions and grow in faith with people who get it.</p>
+      </div>
+      <div class="group-card">
+        <div class="group-icon"><span class="material-icons-round">explore</span></div>
+        <h3>Youth Group</h3>
+        <p>For teens who are ready to explore faith on their own terms. Fun, honest, and real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events-section" id="events">
+  <div class="container">
+    <div class="about-header">
+      <p class="section-label">What's Happening</p>
+      <h2 class="section-title">Upcoming at Calvary</h2>
+    </div>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-image-wrap">
+          <img class="event-image" src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=600&q=80" alt="Friends playing games together" loading="lazy" />
+          <div class="event-image-overlay"></div>
+          <div class="event-date-badge">
+            <span class="material-icons-round">event</span>
+            <div><span class="event-day">Every First Sat</span></div>
+          </div>
+        </div>
+        <div class="event-body">
+          <h3>Men's Board Game Night</h3>
+          <p>An evening of fellowship, food, and friendly competition. Bring a game or just bring yourself.</p>
+          <div class="event-meta">
+            <div class="event-meta-item"><span class="material-icons-round">location_on</span> Calvary Church</div>
+            <div class="event-meta-item"><span class="material-icons-round">people</span> All men welcome</div>
+          </div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-image-wrap">
+          <img class="event-image" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Women having coffee together" loading="lazy" />
+          <div class="event-image-overlay"></div>
+          <div class="event-date-badge">
+            <span class="material-icons-round">event</span>
+            <div><span class="event-day">Every Tuesday</span> · 9–11 AM</div>
+          </div>
+        </div>
+        <div class="event-body">
+          <h3>Women's Ministry Morning</h3>
+          <p>Study, prayer, and community. Part of our morning is spent in the prayer room — a quiet space to connect with God.</p>
+          <div class="event-meta">
+            <div class="event-meta-item"><span class="material-icons-round">location_on</span> Calvary Church</div>
+            <div class="event-meta-item"><span class="material-icons-round">people</span> All women welcome</div>
+          </div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-image-wrap">
+          <img class="event-image" src="https://images.unsplash.com/photo-1559598467-f8b76c8155d0?auto=format&fit=crop&w=600&q=80" alt="Easter celebration" loading="lazy" />
+          <div class="event-image-overlay"></div>
+          <div class="event-date-badge">
+            <span class="material-icons-round">event</span>
+            <div><span class="event-day">Easter Sunday</span></div>
+          </div>
+        </div>
+        <div class="event-body">
+          <h3>Easter Sunday with Paska!</h3>
+          <p>Celebrate Easter with coffee & Paska during the service. If you enjoy baking, we'd love your contribution!</p>
+          <div class="event-actions">
+            <a href="https://calvarychurchsteinbach.churchcenter.com/people/forms/1184378" class="btn btn-navy" target="_blank">
+              <span class="material-icons-round">assignment</span>
+              Sign Up
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-image-wrap">
+          <img class="event-image" src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80" alt="Community support and hope" loading="lazy" />
+          <div class="event-image-overlay"></div>
+          <div class="event-date-badge">
+            <span class="material-icons-round">event</span>
+            <div><span class="event-day">Ongoing</span></div>
+          </div>
+        </div>
+        <div class="event-body">
+          <h3>S.I.R.F. — Recovery & Freedom</h3>
+          <p>Sexual Integrity Recovery and Freedom. A safe, confidential community for anyone seeking healing. Talk to Matt, Rob or Agatha.</p>
+          <div class="event-actions">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnAjXRueKg_GQdytldqpNFI3UWw8neE5Uff3W8jcjNhc0bfA/viewform" class="btn btn-navy" target="_blank">
+              <span class="material-icons-round">assignment</span>
+              Register
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="events-cta">
+      <a href="https://calvarychurchsteinbach.churchcenter.com/calendar?view=month" class="btn btn-primary" target="_blank">
+        <span class="material-icons-round">calendar_month</span>
+        View Full Calendar
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SERMON SPOTLIGHT -->
+<section class="sermon-section">
+  <div class="container">
+    <div class="about-header">
+      <p class="section-label">Sermons & Media</p>
+      <h2 class="section-title">This Week's Message</h2>
+    </div>
+    <div class="sermon-content">
+      <div class="sermon-video">
+        <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=800&q=80" alt="Open Bible on pulpit" />
+        <div class="sermon-play"><span class="material-icons-round">play_arrow</span></div>
+      </div>
+      <div class="sermon-info">
+        <h3>Latest Sermon — Coming Soon</h3>
+        <p>Join us this Sunday for our latest message. Our sermons are also available on our <a href="https://www.youtube.com/calvarychurchsteinbach" target="_blank">YouTube channel</a> and podcast feed.</p>
+        <div>
+          <a href="https://www.youtube.com/calvarychurchsteinbach" class="btn btn-outline" target="_blank">
+            <span class="material-icons-round">ondemand_video</span>
+            Watch on YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section class="connect-section" id="connect">
+  <div class="container">
+    <div class="about-header">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title">We'd Love to Hear From You</h2>
+    </div>
+    <div class="connect-grid">
+      <div class="connect-card">
+        <div class="connect-icon"><span class="material-icons-round">request_quote</span></div>
+        <h3>Prayer Request</h3>
+        <p>Need prayer? Send us your request and our team will lift it up. You don't have to carry everything alone.</p>
+      </div>
+      <div class="connect-card">
+        <div class="connect-icon"><span class="material-icons-round">volunteer_activism</span></div>
+        <h3>Give Online</h3>
+        <p>Your generosity makes everything we do possible. Every dollar stays right here, serving our community.</p>
+      </div>
+      <div class="connect-card">
+        <div class="connect-icon"><span class="material-icons-round">groups</span></div>
+        <h3>Volunteer</h3>
+        <p>There's a place for you here. Whether it's greeting, tech, children's ministry, or behind the scenes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/e4d41239-6211-4231-b72e-9e643dbcc0b2/horizontal.png" alt="Calvary Church" />
+        </div>
+        <p class="footer-tagline">"All of God, in all of us, for all the world."</p>
+        <div class="footer-addr">
+          <p>305 Main St, Steinbach, MB R5G 1Z2</p>
+          <p>Phone: 204.326.1095</p>
+          <p><a href="mailto:office@thecalvarywebsite.com">office@thecalvarywebsite.com</a></p>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#visit">Service Times</a></li>
+          <li><a href="#groups">Groups</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#media">Sermons</a></li>
+          <li><a href="https://eepurl.com/dPYF06" target="_blank">Newsletter</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Follow Us</h4>
+        <div class="footer-social">
+          <a href="http://www.facebook.com/220386214638263" target="_blank" title="Facebook"><span class="material-icons-round">thumb_up</span></a>
+          <a href="http://www.youtube.com/channel/UCYPSOjzlu6SOntwzdqv2q5A" target="_blank" title="YouTube"><span class="material-icons-round">play_circle</span></a>
+        </div>
+        <div style="margin-top: 24px;">
+          <h4 class="footer-heading">Office Hours</h4>
+          <ul class="footer-links">
+            <li><a href="#">Tuesday–Friday</a></li>
+            <li><a href="#">9:00 AM – 4:00 PM</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Calvary Church of Steinbach Inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+const toggle = document.querySelector('.menu-toggle');
+const links = document.querySelector('.nav-links');
+if (toggle) {
+  toggle.addEventListener('click', () => {
+    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '60px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'rgba(26, 43, 74, 0.95)';
+    links.style.padding = '20px';
+    links.style.gap = '16px';
+  });
+}
+</script>
+</body>
+</html>
