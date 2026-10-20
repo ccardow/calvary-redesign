@@ -1,0 +1,13 @@
+{
+  "name": "calvary-redesign",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Calvary Church (Steinbach, MB) website — static site built with Eleventy, content edited with Decap CMS",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

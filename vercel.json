@@ -1,0 +1,5 @@
+{
+  "framework": "eleventy",
+  "buildCommand": "npm run build",
+  "outputDirectory": "_site"
+}
