@@ -30,20 +30,25 @@ npm run build    # production build into _site/
 
 ## Try the editor
 
-Open `/admin` on any deployment of this branch (or the local dev
-server). TEST STATE: the Decap backend is `test-repo`, so edits save
-only in your browser and publish nowhere. It exists so the office
-workflow can be judged — open Staff & Leadership and change a role,
-add an event, toggle the announcement banner — with zero risk.
+Open `/admin` on any deployment of this branch and sign in with a
+GitHub token (fine-grained personal access token, scoped to this
+repo only, Contents: Read and write — it stays in your browser).
+The editor (Sveltia CMS, reading the Decap-format config) loads the
+REAL content: all 13 staff, the events, the site settings. Saving is
+a real commit to this branch, and Vercel rebuilds the preview from
+it within a minute or two — so adding yourself to the team and then
+watching the staff page is the full end-to-end test.
 
 ## Before this could go live (production checklist)
 
-1. **Decap GitHub backend + OAuth.** In `src/admin/config.yml`,
-   replace the `test-repo` backend with the commented GitHub block.
-   Decap's GitHub backend needs a small OAuth helper service (a free
-   Cloudflare Worker running a Decap OAuth provider is the usual
-   route); point `base_url`/`auth_endpoint` at it. Then editors log
-   in with GitHub and every save is a commit + automatic rebuild.
+1. **Editor sign-in for non-technical staff.** The test setup has
+   editors paste a personal GitHub token into the browser — fine for
+   evaluation, clunky as a permanent arrangement for a church
+   office. For production, put a small OAuth helper in front of the
+   GitHub backend (a free Cloudflare Worker running a CMS OAuth
+   provider is the usual route) so editors get a normal "Sign in
+   with GitHub" button instead, and point the branch in
+   `src/admin/config.yml` from `cms-test` to `main`.
 2. **Formspree.** The prayer form posts to
    `https://formspree.io/f/FORMSPREE_FORM_ID` (placeholder). Create a
    Formspree form under the church's email, put its real ID in
