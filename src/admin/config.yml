@@ -1,0 +1,162 @@
+# Decap CMS configuration — Calvary Church website.
+# Editors change content here; the content lives as JSON in src/_data/
+# and Eleventy rebuilds the pages from it. Editors never touch HTML.
+#
+# TEST STATE: the active backend is "test-repo". The editor works fully in
+# the browser but saves to throwaway local storage, so the church office
+# workflow can be evaluated with no accounts and no risk.
+#
+# PRODUCTION: swap in the GitHub backend block below (commented out) and
+# finish the OAuth step in BUILD-NOTES.md; then remove local_backend.
+
+backend:
+  name: test-repo
+
+# --- Production backend (GitHub) — inactive in the test build ---
+# backend:
+#   name: github
+#   repo: ccardow/calvary-redesign
+#   branch: cms-test # switch to "main" when this work is merged
+
+local_backend: true
+
+site_url: https://calvary-redesign.vercel.app
+display_url: https://calvary-redesign.vercel.app
+
+media_folder: "src/static/assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: site
+    label: "Site Settings"
+    files:
+      - name: site
+        label: "Church Info, Services & Sermon"
+        file: "src/_data/site.json"
+        fields:
+          - { label: "Church Name", name: churchName, widget: string }
+          - { label: "Tagline", name: tagline, widget: string }
+          - label: "Announcement Banner"
+            name: announcement
+            widget: object
+            fields:
+              - { label: "Show the banner", name: enabled, widget: boolean }
+              - { label: "Banner text", name: text, widget: string }
+              - { label: "Link text (optional)", name: linkText, widget: string, required: false }
+              - { label: "Link URL (optional)", name: linkUrl, widget: string, required: false }
+          - label: "Services"
+            name: services
+            widget: object
+            fields:
+              - { label: "Hero line", name: heroLine, widget: string }
+              - { label: "Livestream line", name: livestreamLine, widget: string }
+              - label: "Service Times"
+                name: times
+                widget: list
+                fields:
+                  - { label: "Time", name: time, widget: string }
+                  - { label: "Note", name: note, widget: string }
+              - { label: "Childcare note", name: childcare, widget: string }
+              - { label: "Kids Ministry blurb", name: kidsBlurb, widget: text }
+          - label: "Address"
+            name: address
+            widget: object
+            fields:
+              - { label: "Street", name: street, widget: string }
+              - { label: "Street (short form, footer)", name: streetShort, widget: string }
+              - { label: "City / Province / Postal Code", name: cityLine, widget: string }
+          - { label: "Phone", name: phone, widget: string }
+          - { label: "Office Email", name: officeEmail, widget: string }
+          - { label: "Office Hours (info card)", name: officeHours, widget: string }
+          - { label: "Office Hours (footer lines)", name: officeHoursFooter, widget: list }
+          - label: "Sermon Spotlight"
+            name: sermon
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Text", name: text, widget: string }
+              - { label: "YouTube URL", name: youtubeUrl, widget: string }
+          - label: "External Links"
+            name: links
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "YouTube Channel", name: youtubeChannel, widget: string }
+              - { label: "YouTube Channel (footer link)", name: youtubeChannelAlt, widget: string }
+              - { label: "Facebook", name: facebook, widget: string }
+              - { label: "Church Center Calendar", name: calendar, widget: string }
+              - { label: "Newsletter Signup", name: newsletter, widget: string }
+              - { label: "Logo Image URL", name: logoUrl, widget: string }
+              - { label: "Hero Image URL", name: heroImage, widget: string }
+
+  - name: staff
+    label: "Staff & Leadership"
+    files:
+      - name: staff
+        label: "Team Members"
+        file: "src/_data/staff.json"
+        fields:
+          - label: "Leadership (pastors & directors)"
+            name: leadership
+            widget: list
+            fields:
+              - { label: "Name", name: name, widget: string }
+              - { label: "Role", name: role, widget: string }
+              - { label: "Email", name: email, widget: string }
+              - { label: "Photo URL", name: photo, widget: string, hint: "Web address of the headshot image" }
+          - label: "Team"
+            name: team
+            widget: list
+            fields:
+              - { label: "Name", name: name, widget: string }
+              - { label: "Role", name: role, widget: string }
+              - { label: "Email", name: email, widget: string }
+              - { label: "Photo URL", name: photo, widget: string, hint: "Web address of the headshot image" }
+
+  - name: events
+    label: "Homepage Events"
+    files:
+      - name: events
+        label: "Event Cards"
+        file: "src/_data/events.json"
+        fields:
+          - label: "Events"
+            name: items
+            widget: list
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Date badge", name: badge, widget: string, hint: "e.g. Every First Sat, Easter Sunday, Ongoing" }
+              - { label: "Date detail (optional)", name: badgeDetail, widget: string, required: false, hint: "e.g. 9-11 AM" }
+              - { label: "Description", name: description, widget: text }
+              - { label: "Image", name: image, widget: string, hint: "Web address, or a file name like boardgame.jpg" }
+              - { label: "Image description (alt text)", name: imageAlt, widget: string }
+              - label: "Info lines (optional)"
+                name: meta
+                widget: list
+                required: false
+                fields:
+                  - { label: "Icon", name: icon, widget: string, hint: "Material icon name, e.g. location_on, people" }
+                  - { label: "Text", name: text, widget: string }
+              - label: "Button (optional)"
+                name: action
+                widget: object
+                collapsed: true
+                required: false
+                fields:
+                  - { label: "Button label", name: label, widget: string, required: false }
+                  - { label: "Button URL", name: url, widget: string, required: false }
+
+  - name: groups
+    label: "Groups & Ministries"
+    files:
+      - name: groups
+        label: "Group Cards"
+        file: "src/_data/groups.json"
+        fields:
+          - label: "Groups"
+            name: items
+            widget: list
+            fields:
+              - { label: "Icon", name: icon, widget: string, hint: "Material icon name, e.g. home, park, favorite" }
+              - { label: "Name", name: name, widget: string }
+              - { label: "Description", name: description, widget: text }
