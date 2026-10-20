@@ -1,0 +1,393 @@
+---
+permalink: "staff.html"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Staff — Calvary Church</title>
+  <meta name="description" content="Meet the team at Calvary Church of Steinbach, MB. Pastors, directors, and staff who serve our community.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2b4a;
+      --gold: #d4a045;
+      --cream: #faf8f5;
+      --charcoal: #2d2d2d;
+      --warm-gray: #6b7280;
+      --white: #ffffff;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .material-icons-round { vertical-align: middle; font-size: inherit; }
+
+    /* ANIMATIONS - content visible by default, JS adds animation */
+    .fade-up { opacity: 1; transform: translateY(0); transition: none; }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(26, 43, 74, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    .navbar .container { display: flex; justify-content: space-between; align-items: center; padding: 10px 24px; }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; transition: opacity 0.2s; }
+    .nav-logo:hover { opacity: 0.85; }
+    .nav-logo img { height: 52px; width: auto; }
+    .nav-links { display: flex; list-style: none; gap: 32px; }
+    .nav-links a { color: rgba(255, 255, 255, 0.85); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s, transform 0.2s; display: inline-block; }
+    .nav-links a:hover { color: var(--gold); transform: translateY(-1px); }
+    .nav-links a.active { color: var(--gold); }
+    .menu-toggle { display: none; background: none; border: none; color: var(--white); cursor: pointer; padding: 8px; }
+    .menu-toggle .material-icons-round { font-size: 28px; }
+
+    /* PAGE HERO */
+    .page-hero {
+      position: relative;
+      height: 45vh;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: var(--navy);
+      margin-top: 72px;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background: url('friends.jpg') center/cover no-repeat;
+      background-position-y: -150px;
+    }
+    .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26, 43, 74, 0.6), rgba(212, 160, 69, 0.25)); }
+    .page-hero-content { position: relative; z-index: 2; color: var(--white); max-width: 600px; padding: 0 2rem; opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .page-hero-content h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .page-hero-content p { font-size: 1.1rem; opacity: 0.85; line-height: 1.6; }
+
+    /* SECTION STYLES */
+    .staff-section { padding: 80px 0; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-label { font-size: 0.85rem; font-weight: 600; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+
+    /* LEADERSHIP */
+    .leadership-section { background: var(--white); }
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .leader-card {
+      text-align: center;
+      padding: 48px 32px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .leader-card:hover { transform: translateY(-6px); }
+    .leader-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 24px;
+      display: block;
+      border: 4px solid var(--gold);
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+    .leader-card:hover .leader-photo {
+      transform: scale(1.04);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+    .leader-card h3 { font-size: 1.3rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .leader-card .role { font-size: 0.95rem; color: var(--gold); font-weight: 600; margin-bottom: 16px; }
+    .leader-card .email-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--warm-gray); text-decoration: none; font-size: .6rem; font-weight: 500;
+      transition: color 0.2s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+    .leader-card .email-link:hover { color: var(--gold); }
+    .leader-card .email-link .material-icons-round { font-size: 14px; flex-shrink: 0; }
+
+    /* STAFF GRID */
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 32px;
+    }
+    .staff-card {
+      text-align: center;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 32px 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+    }
+    .staff-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); }
+    .staff-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 16px;
+      display: block;
+      border: 3px solid rgba(212, 160, 69, 0.3);
+      transition: all 0.3s ease;
+    }
+    .staff-card:hover .staff-photo { border-color: var(--gold); transform: scale(1.03); }
+    .staff-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .staff-card .role { font-size: 0.85rem; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+    .staff-card .email-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      color: var(--warm-gray); text-decoration: none; font-size: .6rem; font-weight: 500;
+      transition: color 0.2s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+    .staff-card .email-link:hover { color: var(--gold); }
+    .staff-card .email-link .material-icons-round { font-size: 12px; flex-shrink: 0; }
+
+    /* CTA */
+    .staff-cta {
+      padding: 80px 0;
+      background: var(--navy);
+      text-align: center;
+    }
+    .staff-cta p { color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 10px;
+      font-weight: 600; font-size: 1rem; cursor: pointer; border: none; transition: all 0.25s;
+      text-decoration: none;
+    }
+    .btn .material-icons-round { font-size: 20px; }
+    .btn-primary { background: var(--gold); color: var(--navy); }
+    .btn-primary:hover { background: #e5ae55; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212, 160, 69, 0.3); }
+    .btn-outline { background: transparent; border: 2px solid rgba(255, 255, 255, 0.4); color: var(--white); }
+    .btn-outline:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: var(--white); padding: 60px 0 24px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-logo img { height: 44px; width: auto; margin-bottom: 12px; opacity: 0.9; }
+    .footer-tagline { color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; font-style: italic; margin-bottom: 20px; }
+    .footer-addr p { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; line-height: 1.6; }
+    .footer-addr a { color: var(--gold); text-decoration: none; }
+    .footer-addr a:hover { text-decoration: underline; }
+    h4.footer-heading { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; color: var(--gold); }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; display: inline-block; }
+    .footer-links a:hover { color: var(--gold); transform: translateX(4px); }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a { width: 40px; height: 40px; background: rgba(255, 255, 255, 0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: rgba(255, 255, 255, 0.5); text-decoration: none; transition: all 0.25s; }
+    .footer-social a:hover { background: var(--gold); color: var(--navy); transform: translateY(-3px); }
+    .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 24px; text-align: center; font-size: 0.8rem; color: rgba(255, 255, 255, 0.25); }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .nav-logo img { height: 40px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .leadership-grid { grid-template-columns: 1fr; }
+      .staff-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    }
+    @media (max-width: 600px) {
+      .staff-grid { grid-template-columns: 1fr; }
+      .page-hero { min-height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <img src="{{ site.links.logoUrl }}" alt="Calvary Church" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#visit">Visit</a></li>
+      <li><a href="index.html#groups">Groups</a></li>
+      <li><a href="index.html#events">Events</a></li>
+      <li><a href="index.html#media">Media</a></li>
+      <li><a href="staff.html" class="active">Staff</a></li>
+      <li><a href="index.html#connect">Connect</a></li>
+    </ul>
+    <button class="menu-toggle"><span class="material-icons-round">menu</span></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <h1>Our Team</h1>
+    <p>The pastors, directors, and staff who serve Calvary Church and our community in Steinbach, MB.</p>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="staff-section leadership-section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-label">Leadership</p>
+      <h2 class="section-title">Meet Our Pastors & Directors</h2>
+    </div>
+    <div class="leadership-grid">
+{% for person in staff.leadership %}
+      <div class="leader-card fade-up d{{ loop.index }}">
+        <img class="leader-photo" src="{{ person.photo }}" alt="{{ person.name }}" loading="lazy" />
+        <h3>{{ person.name }}</h3>
+        <p class="role">{{ person.role }}</p>
+        <a href="mailto:{{ person.email }}" class="email-link">
+          <span class="material-icons-round">mail</span> {{ person.email }}
+        </a>
+      </div>
+{% endfor %}
+    
+    </div>
+  </div>
+</section>
+
+<!-- STAFF -->
+<section class="staff-section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-label">Our Staff</p>
+      <h2 class="section-title">The Full Team</h2>
+    </div>
+    <div class="staff-grid">
+{% for person in staff.team %}
+      <div class="staff-card fade-up d{{ (loop.index0 % 3) + 1 }}">
+        <img class="staff-photo" src="{{ person.photo }}" alt="{{ person.name }}" loading="lazy" />
+        <h3>{{ person.name }}</h3>
+        <p class="role">{{ person.role }}</p>
+        <a href="mailto:{{ person.email }}" class="email-link">
+          <span class="material-icons-round">mail</span> {{ person.email }}
+        </a>
+      </div>
+{% endfor %}
+    
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="staff-cta">
+  <div class="container">
+    <p class="fade-up">Have a question or want to connect with someone on our team? We'd love to hear from you.</p>
+    <a href="index.html#connect" class="btn btn-primary fade-up d1">
+      <span class="material-icons-round">handshake</span>
+      Get In Touch
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <a href="index.html"><img src="{{ site.links.logoUrl }}" alt="Calvary Church" /></a>
+        </div>
+        <p class="footer-tagline">"All of God, in all of us, for all the world."</p>
+        <div class="footer-addr">
+          <p>{{ site.address.streetShort }}, {{ site.address.cityLine }}</p>
+          <p>Phone: {{ site.phone }}</p>
+          <p><a href="mailto:{{ site.officeEmail }}">{{ site.officeEmail }}</a></p>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#visit">Service Times</a></li>
+          <li><a href="index.html#groups">Groups</a></li>
+          <li><a href="index.html#events">Events</a></li>
+          <li><a href="index.html#media">Sermons</a></li>
+          <li><a href="{{ site.links.newsletter }}" target="_blank">Newsletter</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Follow Us</h4>
+        <div class="footer-social">
+          <a href="{{ site.links.facebook }}" target="_blank" title="Facebook">
+            <span class="material-icons-round">thumb_up</span>
+          </a>
+          <a href="{{ site.links.youtubeChannelAlt }}" target="_blank" title="YouTube">
+            <span class="material-icons-round">play_circle</span>
+          </a>
+        </div>
+        <div style="margin-top: 24px;">
+          <h4 class="footer-heading">Office Hours</h4>
+          <ul class="footer-links">
+            <li><a href="#">{{ site.officeHoursFooter[0] }}</a></li>
+            <li><a href="#">{{ site.officeHoursFooter[1] }}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Calvary Church of Steinbach Inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+const toggle = document.querySelector('.menu-toggle');
+const links = document.querySelector('.nav-links');
+if (toggle) {
+  toggle.addEventListener('click', () => {
+    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '60px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'rgba(26, 43, 74, 0.95)';
+    links.style.padding = '20px';
+    links.style.gap = '16px';
+  });
+}
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
