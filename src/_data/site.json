@@ -1,0 +1,52 @@
+{
+  "churchName": "Calvary Church",
+  "tagline": "All of God, in all of us, for all the world",
+  "announcement": {
+    "enabled": true,
+    "text": "Join us this Sunday — services at 9:00 AM & 11:00 AM. All are welcome.",
+    "linkText": "Plan your visit",
+    "linkUrl": "#visit"
+  },
+  "services": {
+    "heroLine": "Sunday Services: 9:00 AM & 11:00 AM",
+    "livestreamLine": "Livestream Sundays at 9:00 AM",
+    "times": [
+      {
+        "time": "9:00 AM",
+        "note": "also on livestream"
+      },
+      {
+        "time": "11:00 AM",
+        "note": "in-person"
+      }
+    ],
+    "childcare": "Childcare: ages 1 – Grade 4",
+    "kidsBlurb": "Ages 1 through Grade 4 head to their own classrooms after our opening praise & worship. Safe, fun, and full of stories."
+  },
+  "address": {
+    "street": "305 Main Street",
+    "streetShort": "305 Main St",
+    "cityLine": "Steinbach, MB R5G 1Z2"
+  },
+  "phone": "204.326.1095",
+  "officeEmail": "office@thecalvarywebsite.com",
+  "officeHours": "Tues–Fri, 9 AM – 4 PM",
+  "officeHoursFooter": [
+    "Tuesday–Friday",
+    "9:00 AM – 4:00 PM"
+  ],
+  "sermon": {
+    "title": "Latest Sermon — Coming Soon",
+    "text": "Join us this Sunday for our latest message.",
+    "youtubeUrl": "https://www.youtube.com/calvarychurchsteinbach"
+  },
+  "links": {
+    "youtubeChannel": "https://www.youtube.com/calvarychurchsteinbach",
+    "youtubeChannelAlt": "http://www.youtube.com/channel/UCYPSOjzlu6SOntwzdqv2q5A",
+    "facebook": "http://www.facebook.com/220386214638263",
+    "calendar": "https://calvarychurchsteinbach.churchcenter.com/calendar?view=month",
+    "newsletter": "https://eepurl.com/dPYF06",
+    "logoUrl": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/e4d41239-6211-4231-b72e-9e643dbcc0b2/horizontal.png",
+    "heroImage": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/1579723513105-DZ1MQ71CW3L5JGR8OEIK/IMG_2285-3.jpg?format=1500w"
+  }
+}

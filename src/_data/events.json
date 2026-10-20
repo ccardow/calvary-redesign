@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "title": "Men's Board Game Night",
+      "badge": "Every First Sat",
+      "badgeDetail": "",
+      "description": "An evening of fellowship, food, and friendly competition. Bring a game or just bring yourself.",
+      "image": "boardgame.jpg",
+      "imageAlt": "Friends playing board games together",
+      "meta": [
+        {
+          "icon": "location_on",
+          "text": "Calvary Church"
+        },
+        {
+          "icon": "people",
+          "text": "All men welcome"
+        }
+      ]
+    },
+    {
+      "title": "Women's Ministry Morning",
+      "badge": "Every Tuesday",
+      "badgeDetail": "9–11 AM",
+      "description": "Study, prayer, and community. Part of our morning is spent in the prayer room — a quiet space to connect with God.",
+      "image": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80",
+      "imageAlt": "Women having coffee together",
+      "meta": [
+        {
+          "icon": "location_on",
+          "text": "Calvary Church"
+        },
+        {
+          "icon": "people",
+          "text": "All women welcome"
+        }
+      ]
+    },
+    {
+      "title": "Easter Sunday with Paska!",
+      "badge": "Easter Sunday",
+      "badgeDetail": "",
+      "description": "Celebrate Easter with coffee & Paska during the service. If you enjoy baking, we'd love your contribution!",
+      "image": "https://images.unsplash.com/photo-1559598467-f8b76c8155d0?auto=format&fit=crop&w=600&q=80",
+      "imageAlt": "Easter celebration",
+      "action": {
+        "label": "Sign Up",
+        "url": "https://calvarychurchsteinbach.churchcenter.com/people/forms/1184378"
+      }
+    },
+    {
+      "title": "S.I.R.F. — Recovery & Freedom",
+      "badge": "Ongoing",
+      "badgeDetail": "",
+      "description": "Sexual Integrity Recovery and Freedom. A safe, confidential community for anyone seeking healing. Talk to Matt, Rob or Agatha.",
+      "image": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80",
+      "imageAlt": "Community support and hope",
+      "action": {
+        "label": "Register",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSfnAjXRueKg_GQdytldqpNFI3UWw8neE5Uff3W8jcjNhc0bfA/viewform"
+      }
+    }
+  ]
+}

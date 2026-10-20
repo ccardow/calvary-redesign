@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "icon": "home",
+      "name": "Life Groups",
+      "description": "Small groups meet throughout the week in homes across Steinbach. Where deep friendships are built and real life gets lived."
+    },
+    {
+      "icon": "park",
+      "name": "Harvest (50+)",
+      "description": "Golden years, golden community. Gatherings for fellowship, shared meals, trips, and good conversation."
+    },
+    {
+      "icon": "sports_esports",
+      "name": "Men's Ministry",
+      "description": "First Saturday of every month — fellowship, food, and board games at the church. Just show up."
+    },
+    {
+      "icon": "favorite",
+      "name": "Women's Ministry",
+      "description": "Tuesday mornings, 9–11 AM. Study, prayer, and community. Part of our morning is spent in the prayer room."
+    },
+    {
+      "icon": "stars",
+      "name": "Young Adults",
+      "description": "Finding your way in your 20s? A place to ask hard questions and grow in faith with people who get it."
+    },
+    {
+      "icon": "explore",
+      "name": "Youth Group",
+      "description": "For teens who are ready to explore faith on their own terms. Fun, honest, and real."
+    }
+  ]
+}

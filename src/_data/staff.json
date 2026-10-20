@@ -1,0 +1,84 @@
+{
+  "leadership": [
+    {
+      "name": "Rob Balfour",
+      "role": "Team Leading Pastor",
+      "email": "rob@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/c25a2d2d-1d6f-4a2b-9958-9c28a5696755/IMG_0471.jpg?format=320w"
+    },
+    {
+      "name": "Greg Friesen",
+      "role": "Associate Pastor",
+      "email": "greg@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/9b0c04df-05ab-48f8-8e36-60e861ba5577/IMG_0502-2.jpg?format=320w"
+    },
+    {
+      "name": "Matt Vogt",
+      "role": "Care Pastor",
+      "email": "matt@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/9da9ced1-9523-4a4b-a8db-85b1370d2ff4/IMG_0500-2.jpg?format=320w"
+    }
+  ],
+  "team": [
+    {
+      "name": "Gene Enns",
+      "role": "Executive Director",
+      "email": "gene@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/c32e0bb6-e910-43a8-95df-df6e731757ce/Gene.jpg?format=320w"
+    },
+    {
+      "name": "Agatha Giesbrecht",
+      "role": "Women's Director",
+      "email": "agatha@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/b9148fb6-87b5-485f-a2d9-639dc62ea27a/IMG_0509-2.jpg?format=320w"
+    },
+    {
+      "name": "Colton Bercier",
+      "role": "Life Group Director",
+      "email": "colton@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/c7668ba3-ddb2-4b13-b30f-74d325deff6d/IMG_0485.jpg?format=320w"
+    },
+    {
+      "name": "Taylor Friesen",
+      "role": "Youth Director",
+      "email": "taylor@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/615a6ec2-c8da-4545-bf1e-472472e6abc5/IMG_0461.jpg?format=320w"
+    },
+    {
+      "name": "Nick Froese",
+      "role": "Assistant Youth Director",
+      "email": "nick@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/5c22b411-e320-4f1e-ab5c-c8d810ff6e3c/IMG_0468.jpg?format=320w"
+    },
+    {
+      "name": "Emily Tyler",
+      "role": "Children's Ministry Director",
+      "email": "emily@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/27d8d0b5-6b9f-4b5a-bba9-b226ce612f33/IMG_0451.jpg?format=320w"
+    },
+    {
+      "name": "Susan Tyler",
+      "role": "Children's Ministry Coordinator",
+      "email": "susan@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/bad5e881-c3ed-4a71-878e-8921a9919249/IMG_0496-2.jpg?format=320w"
+    },
+    {
+      "name": "Kaleigh Kasdorf",
+      "role": "Events Coordinator",
+      "email": "kaleigh@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/7f5696c7-1ac6-4472-811c-7c178de2eb26/IMG_0450.jpg?format=320w"
+    },
+    {
+      "name": "Irma Vogt-Dyck",
+      "role": "Financial Administrator",
+      "email": "finance@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/a7e45c06-f30b-4d71-a728-5eba95d92593/IMG_0479.jpg?format=320w"
+    },
+    {
+      "name": "Larry Gordon",
+      "role": "Building Administrator",
+      "email": "building@thecalvarywebsite.com",
+      "photo": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/347a6bcf-e5d0-4ab2-98b2-8a7d6997e412/IMG_0454.jpg?format=320w"
+    }
+  ]
+}
