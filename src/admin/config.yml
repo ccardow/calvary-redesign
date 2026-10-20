@@ -2,23 +2,18 @@
 # Editors change content here; the content lives as JSON in src/_data/
 # and Eleventy rebuilds the pages from it. Editors never touch HTML.
 #
-# TEST STATE: the active backend is "test-repo". The editor works fully in
-# the browser but saves to throwaway local storage, so the church office
-# workflow can be evaluated with no accounts and no risk.
-#
-# PRODUCTION: swap in the GitHub backend block below (commented out) and
-# finish the OAuth step in BUILD-NOTES.md; then remove local_backend.
+# Editors sign in with a GitHub token — no third-party OAuth service.
+# See BUILD-NOTES.md for how the test is set up and what production needs.
 
+# The GitHub backend is ACTIVE: editors sign in with a personal GitHub
+# token (fine-grained, scoped to this repo, Contents: Read and write)
+# pasted into the browser. Saves are real commits to the branch below,
+# and Vercel rebuilds the preview from them. The token never leaves the
+# editor's browser and can be revoked at any time.
 backend:
-  name: test-repo
-
-# --- Production backend (GitHub) — inactive in the test build ---
-# backend:
-#   name: github
-#   repo: ccardow/calvary-redesign
-#   branch: cms-test # switch to "main" when this work is merged
-
-local_backend: true
+  name: github
+  repo: ccardow/calvary-redesign
+  branch: cms-test # switch to "main" when this work is merged
 
 site_url: https://calvary-redesign.vercel.app
 display_url: https://calvary-redesign.vercel.app

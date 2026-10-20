@@ -5,9 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>Content Manager — Calvary Church</title>
+  <link href="config.yml" type="text/yaml" rel="cms-config-url" />
 </head>
 <body>
-  <!-- Decap CMS: edits the JSON content files in src/_data/. See config.yml. -->
-  <script src="https://cdn.jsdelivr.net/npm/decap-cms@3/dist/decap-cms.js"></script>
+  <!-- Sveltia CMS (Decap-compatible editor) — reads/writes the JSON content
+       files in src/_data/ through the GitHub backend in config.yml.
+       Sign-in uses a personal GitHub token pasted into the browser;
+       no third-party OAuth service is involved. -->
+  <script src="https://cdn.jsdelivr.net/npm/@sveltia/cms/dist/sveltia-cms.js"></script>
 </body>
 </html>
