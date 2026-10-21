@@ -6,6 +6,23 @@ Pages are now Eleventy templates; content lives in JSON files an editor
 can change through friendly forms at `/admin`. Output is still plain
 static HTML on Vercel.
 
+## If you get lost — key locations
+
+- **This file** is the map. It lives in the repo at
+  `ccardow/calvary-redesign`, branch `cms-test` (BUILD-NOTES.md).
+- **Source code:** https://github.com/ccardow/calvary-redesign
+  (work on the `cms-test` branch; `main` is the original April build)
+- **Test site preview:** https://calvary-redesign-git-cms-test-ccardows-projects.vercel.app
+- **Content editor:** the same address + `/admin`
+  (sign in with a GitHub token — see "Try the editor" below)
+- **Original demo (main branch):** https://calvary-redesign.vercel.app
+- **The church's current live site:** https://www.thecalvarywebsite.com
+- **Editable content files:** `src/_data/` in the repo
+  (`site.json`, `staff.json`, `events.json`, `groups.json`)
+- Note: branch previews exist only while the branch does. If this
+  work is merged to `main`, the preview address retires and the
+  editor lives at the production domain + `/admin`.
+
 ## How it fits together
 
 - `src/index.njk`, `src/staff.njk` — the two pages (formerly root HTML)
