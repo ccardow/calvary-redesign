@@ -78,11 +78,15 @@ watching the staff page is the full end-to-end test.
    and 305 Main Street. Confirm the truth with the church office and
    update `site.json` — that is now a two-minute edit, which is the
    point of this build.
-4. **Images still hosted on Squarespace.** The logo, hero photo and
-   all 13 headshots are served from the church's Squarespace CDN.
-   If the Squarespace subscription is cancelled they break. Download
-   them into `src/static/assets/` and update the URLs in the data
-   files before cutover.
+4. **Images — DONE on this branch.** The logo, hero photo, all 13
+   headshots and the Unsplash stock photos were downloaded into
+   `src/static/assets/` (4.4 MB total; Squarespace serves WebP, so
+   the files use .webp names) and every reference now points at a
+   local file. The ONE remaining Squarespace URL in the built site
+   is Cam's editor-test entry, which borrowed Colton Bercier's
+   photo — deleting that test entry removes the last external
+   image dependency. Nothing on the site breaks if Squarespace
+   is cancelled.
 5. **Church Center stays.** Calendar, event registration and giving
    remain in Church Center / Planning Center; the site links out,
    exactly as the current site does. The calendar is deliberately

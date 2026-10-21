@@ -46,7 +46,7 @@
     "facebook": "http://www.facebook.com/220386214638263",
     "calendar": "https://calvarychurchsteinbach.churchcenter.com/calendar?view=month",
     "newsletter": "https://eepurl.com/dPYF06",
-    "logoUrl": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/e4d41239-6211-4231-b72e-9e643dbcc0b2/horizontal.png",
-    "heroImage": "https://images.squarespace-cdn.com/content/v1/524d9683e4b088674ffd3b74/1579723513105-DZ1MQ71CW3L5JGR8OEIK/IMG_2285-3.jpg?format=1500w"
+    "logoUrl": "assets/logo.webp",
+    "heroImage": "assets/hero.webp"
   }
 }

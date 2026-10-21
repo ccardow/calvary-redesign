@@ -23,7 +23,7 @@
       "badge": "Every Tuesday",
       "badgeDetail": "9–11 AM",
       "description": "Study, prayer, and community. Part of our morning is spent in the prayer room — a quiet space to connect with God.",
-      "image": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80",
+      "image": "assets/event-womens.jpg",
       "imageAlt": "Women having coffee together",
       "meta": [
         {
@@ -41,7 +41,7 @@
       "badge": "Easter Sunday",
       "badgeDetail": "",
       "description": "Celebrate Easter with coffee & Paska during the service. If you enjoy baking, we'd love your contribution!",
-      "image": "https://images.unsplash.com/photo-1559598467-f8b76c8155d0?auto=format&fit=crop&w=600&q=80",
+      "image": "assets/event-easter.jpg",
       "imageAlt": "Easter celebration",
       "action": {
         "label": "Sign Up",
@@ -53,7 +53,7 @@
       "badge": "Ongoing",
       "badgeDetail": "",
       "description": "Sexual Integrity Recovery and Freedom. A safe, confidential community for anyone seeking healing. Talk to Matt, Rob or Agatha.",
-      "image": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80",
+      "image": "assets/event-sirf.jpg",
       "imageAlt": "Community support and hope",
       "action": {
         "label": "Register",
